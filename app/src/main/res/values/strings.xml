@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FitTracker</string>
+    <string name="modifier">Modifier</string>
+    <string name="enregistrer">Enregistrer</string>
+    <string name="supprimer">Supprimer</string>
+    <string name="inscrire">S\'inscrire</string>
+    <string name="nom">Nom</string>
+    <string name="prénom">Prénom</string>
+    <string name="mail">E-mail</string>
+    <string name="mdp">Mot de Passe</string>
+    <string name="poids">Poids</string>
+    <string name="taille">Taille</string>
+    <string name="dateNaiss">Date de Naissance</string>
+
+</resources>
