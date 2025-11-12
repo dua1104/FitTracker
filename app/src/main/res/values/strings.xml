@@ -3,13 +3,20 @@
     <string name="modifier">Modifier</string>
     <string name="enregistrer">Enregistrer</string>
     <string name="supprimer">Supprimer</string>
-    <string name="inscrire">S\'inscrire</string>
+    <string name="inscrire">Vous n\'avez pas de compte? Inscrivez-vous</string>
+    <string name="signup">S\'inscrire</string>
+    <string name="seconnecter">Se Connecter</string>
     <string name="nom">Nom</string>
-    <string name="prénom">Prénom</string>
+    <string name="prenom">Prénom</string>
     <string name="mail">E-mail</string>
     <string name="mdp">Mot de Passe</string>
     <string name="poids">Poids</string>
     <string name="taille">Taille</string>
     <string name="dateNaiss">Date de Naissance</string>
+    <string name="hintmdp">Entrez Votre Mot de Passe</string>
+    <string name="hintconfirmmdp">Confirmer Votre Mot de Passe</string>
+    <string name="hintdatenaiss">JJ/MM/AAAA</string>
+    <string name="hinttaille">en CM</string>
+    <string name="hintpoids">en KG</string>
 
 </resources>
