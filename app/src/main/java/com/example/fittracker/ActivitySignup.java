@@ -2,6 +2,7 @@ package com.example.fittracker;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,42 +18,53 @@ public class ActivitySignup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        etPrenom=findViewById(R.id.prenom);
+        etNom=findViewById(R.id.nom);
+        etDateNaiss=findViewById(R.id.datenaiss);
+        etMail=findViewById(R.id.mail);
+        etMdp=findViewById(R.id.mdpsignup);
+        etMdpConfirm=findViewById(R.id.mdpsignupconfirme);
+        etTaille=findViewById(R.id.taille);
+        etPoids=findViewById(R.id.poids);
+        btnSign=findViewById(R.id.sign);
 
-        etPrenom = findViewById(R.id.prenom);
-        etNom = findViewById(R.id.nom);
-        etDateNaiss = findViewById(R.id.datenaiss);
-        etMail = findViewById(R.id.mail);
-        etMdp = findViewById(R.id.mdpsignup);
-        etMdpConfirm = findViewById(R.id.mdpsignupconfirme);
-        etTaille = findViewById(R.id.taille);
-        etPoids = findViewById(R.id.poids);
-        btnSign = findViewById(R.id.sign);
+        btnSign.setOnClickListener(v -> handleSignup());
+    }
 
-        btnSign.setOnClickListener(v -> {
-            String prenom = etPrenom.getText().toString().trim();
-            String nom = etNom.getText().toString().trim();
-            String dateNaiss = etDateNaiss.getText().toString().trim();
-            String email = etMail.getText().toString().trim();
-            String mdp = etMdp.getText().toString().trim();
-            String mdpConfirm = etMdpConfirm.getText().toString().trim();
-            String taille = etTaille.getText().toString().trim();
-            String poids = etPoids.getText().toString().trim();
+    private void handleSignup(){
+        String prenom=etPrenom.getText().toString().trim();
+        String nom=etNom.getText().toString().trim();
+        String dateNaiss=etDateNaiss.getText().toString().trim();
+        String email=etMail.getText().toString().trim();
+        String mdp=etMdp.getText().toString().trim();
+        String mdpConfirm=etMdpConfirm.getText().toString().trim();
+        String taille=etTaille.getText().toString().trim();
+        String poids=etPoids.getText().toString().trim();
 
-            if(TextUtils.isEmpty(prenom) || TextUtils.isEmpty(nom) || TextUtils.isEmpty(dateNaiss) ||
-                    TextUtils.isEmpty(email) || TextUtils.isEmpty(mdp) || TextUtils.isEmpty(mdpConfirm) ||
-                    TextUtils.isEmpty(taille) || TextUtils.isEmpty(poids)) {
-                Toast.makeText(ActivitySignup.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (prenom.isEmpty()||nom.isEmpty()||dateNaiss.isEmpty()||email.isEmpty()||
+                mdp.isEmpty()||mdpConfirm.isEmpty()||taille.isEmpty()||poids.isEmpty()){
+            showMessage("Veuillez remplir tous les champs");
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            showMessage("Format de l'email invalide");
+            return;
+        }
+        if (!dateNaiss.matches("\\d{2}/\\d{2}/\\d{4}")){
+            showMessage("Date de naissance invalide (format JJ/MM/AAAA)");
+            return;
+        }
 
-            if(!mdp.equals(mdpConfirm)) {
-                Toast.makeText(ActivitySignup.this, "Les mots de passe ne correspondent pas", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (!mdp.equals(mdpConfirm)){
+            showMessage("Les mots de passe ne correspondent pas");
+            return;
+        }
 
+        showMessage("Inscription réussie!");
+        finish();
+    }
 
-            Toast.makeText(ActivitySignup.this, "Inscription réussie!", Toast.LENGTH_SHORT).show();
-            finish();
-        });
+    private void showMessage(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

@@ -2,10 +2,10 @@ package com.example.fittracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,42 +25,53 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etMail = findViewById(R.id.mail);
-        etMdp = findViewById(R.id.mdp);
-        btnSignIn = findViewById(R.id.add);
-        tvInscrire = findViewById(R.id.tv_inscrire);
+        etMail=findViewById(R.id.mail);
+        etMdp=findViewById(R.id.mdp);
+        btnSignIn=findViewById(R.id.add);
+        tvInscrire=findViewById(R.id.tv_inscrire);
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = etMail.getText().toString();
-                String password = etMdp.getText().toString();
+        btnSignIn.setOnClickListener(v -> handleLogin());
 
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
-                } else {
-                    // TODO: Add real login logic here
-                    Toast.makeText(MainActivity.this, "Connexion réussie!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        makeInscrireClickable();
+    }
 
-        String text = tvInscrire.getText().toString();
-        SpannableString spannable = new SpannableString(text);
+    private void handleLogin() {
+        String email=etMail.getText().toString().trim();
+        String password=etMdp.getText().toString().trim();
 
-        int start = text.indexOf("inscrivez-vous");
-        int end = start + "inscrivez-vous".length();
+        if (email.isEmpty()||password.isEmpty()) {
+            showMessage("Veuillez remplir tous les champs");
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            showMessage("Format de l'email invalide");
+            return;
+        }
+        showMessage("Connexion réussie!");
+    }
 
-        ClickableSpan clickableSpan = new ClickableSpan() {
+    private void makeInscrireClickable() {
+        String fullText=tvInscrire.getText().toString();
+        String keyword="inscrivez-vous";
+
+        int start=fullText.toLowerCase().indexOf(keyword.toLowerCase());
+        if (start<0) return;
+        int end=start+keyword.length();
+        SpannableString spannable=new SpannableString(fullText);
+        ClickableSpan span=new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                Intent intent = new Intent(MainActivity.this, ActivitySignup.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, ActivitySignup.class));
             }
         };
 
-        spannable.setSpan(clickableSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tvInscrire.setText(spannable);
+        spannable.setSpan(span,start,end,0);
+
         tvInscrire.setMovementMethod(LinkMovementMethod.getInstance());
+        tvInscrire.setText(spannable);
+    }
+
+    private void showMessage(String msg) {
+        Toast.makeText(this, msg,Toast.LENGTH_SHORT).show();
     }
 }
