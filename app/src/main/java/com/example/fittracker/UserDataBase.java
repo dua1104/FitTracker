@@ -23,7 +23,7 @@ public class UserDataBase extends SQLiteOpenHelper {
     public UserDataBase(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
-
+    //création de la base
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (" +
@@ -82,12 +82,12 @@ public class UserDataBase extends SQLiteOpenHelper {
 
         return result > 0;
     }
-
+    //delete
     public int deleteUser(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "ID = ?", new String[]{String.valueOf(id)});
     }
-
+    //récupération de user à partir de l'id
     public Cursor getUserById(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE ID = ?", new String[]{String.valueOf(id)});

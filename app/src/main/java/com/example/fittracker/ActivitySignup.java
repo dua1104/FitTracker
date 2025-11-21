@@ -83,7 +83,6 @@ public class ActivitySignup extends AppCompatActivity {
                 taille,
                 poids
         );
-
         if (inserted) {
             showMessage("Inscription réussie !");
             finish();  // Retour à l'activité précédente
