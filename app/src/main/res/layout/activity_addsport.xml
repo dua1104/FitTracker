@@ -47,7 +47,7 @@
             android:layout_marginBottom="8dp" />
 
         <EditText
-            android:id="@+id/durationEditText"
+            android:id="@+id/duration"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="@string/hint_duration"
