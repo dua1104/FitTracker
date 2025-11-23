@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-class SportDataBase extends SQLiteOpenHelper {
+public class SportDataBase extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "sport.db";
     private static final String TABLE_NAME = "sport";
 
