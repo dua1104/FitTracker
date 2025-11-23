@@ -18,5 +18,44 @@
     <string name="hintdatenaiss">JJ/MM/AAAA</string>
     <string name="hinttaille">en CM</string>
     <string name="hintpoids">en KG</string>
+    <!--strings de dashboard-->
+    <string name="today">Aujourdhui</string>
+    <string name="calorie_summary">Résumé Calorique</string>
+    <string name="calories_consumed">Calories Consommées:</string>
+    <string name="calories_burned">Calories Brulées:</string>
+    <string name="calorie_balance">Bilan Calorique:</string>
+    <string name="objectif_eau">Objectif d\'eau:</string>
+    <string name="action_rapide">Actions Rapides</string>
+    <string name="add_meal">Ajouter\nRepas</string>
+    <string name="add_sport">Ajouter\nSport</string>
+    <string name="add_water">Ajouter\nEau</string>
+    <string name="recent_activities">Activites Récentes</string>
+    <string name="no_recent_activities">Aucune activité récente</string>
+    <string name="water_goal_format">/2l</string>
+    <string name="calories_format"> cal</string>
+
+    <!-- Strings pour Ajouter Repas -->
+    <string name="add_meal_title">Ajouter un Repas</string>
+    <string name="food_name">Nom de l\'aliment</string>
+    <string name="hint_food_name">Entrez le nom de l\'aliment</string>
+    <string name="quantity">Quantité</string>
+    <string name="hint_quantity">en grammes</string>
+    <string name="calories">Calories</string>
+    <string name="hint_calories">nombre de calories</string>
+    <string name="meal_type">Type de repas</string>
+    <string name="breakfast">Petit déjeuner</string>
+    <string name="lunch">Déjeuner</string>
+    <string name="snack">Snack</string>
+    <string name="dinner">Dîner</string>
+    <string name="add_meal_button">Ajouter le Repas</string>
+    <string name="cancel">Annuler</string>
+
+    <!-- Strings pour Ajouter Sport -->
+    <string name="add_sport_title">Ajouter une Activité Sportive</string>
+    <string name="sport_name">Nom du sport</string>
+    <string name="hint_sport_name">Entrez le nom du sport</string>
+    <string name="duration">Durée</string>
+    <string name="hint_duration">en minutes</string>
+    <string name="add_sport_button">Ajouter l\'Activité</string>
 
 </resources>
